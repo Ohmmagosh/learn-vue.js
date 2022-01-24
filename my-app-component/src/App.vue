@@ -2,19 +2,33 @@
   <header>
     <h1>employee management system</h1>
   </header>
-  <section class="employee-content">
+  <FormComponent @save="insertEmployee"/>
+  <section class="employee-content" v-if="employees.length>0">
     <h2>employees infomation</h2>
-    <ListData/>
+    <ListData :employees="employees"/>
   </section>
 </template>
 <script>
+import FormComponent from './components/FormComponent.vue';
 
 import ListData from "./components/ListData.vue";
 
+
 export default {
   name: "App",
+  methods: {
+    insertEmployee(data){
+      this.employees.push(data)
+    }
+  },
+  data() {
+    return {
+      employees:[]
+    }
+  },
   components: {
-    ListData
+    ListData,
+    FormComponent
   },
   
 };

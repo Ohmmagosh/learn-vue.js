@@ -3,16 +3,10 @@
     <template v-slot:card-header>
       <h1>{{ name }}</h1>
     </template>
-    <template v-slot:card-button>
-      <button @click="showDescription(id)">Description</button>
-      <button @click="deleteEmployee(id)">delete</button>
-    </template>
     <template v-slot:card-content>
-      <transition name="fade">
-        <div v-show="isVisible">
-          <p>salary :{{ salary }}Bath department:{{ department }}</p>
-        </div>
-      </transition>
+      <p>salary :{{ salary }}Bath   Gender:{{ gender }}</p>
+      <p>department:{{ department }} </p>
+      <p>language skill:{{ skill }}</p>
     </template>
   </card>
 </template>
@@ -23,14 +17,6 @@ export default {
   name: "Person",
   components: {
     Card,
-  },
-  methods: {
-    showDescription(id) {
-      this.$emit("show", id);
-    },
-    deleteEmployee(id) {
-      this.$emit("delete", id);
-    },
   },
   props: {
     name: {
@@ -45,12 +31,14 @@ export default {
       type: String,
       required: true,
     },
-    id: {
-      type: Number,
+    gender:{
+      type: String,
+      required: true
     },
-    isVisible: {
-      type: Boolean,
-    },
+    skill:{
+      type: Array,
+      required:true
+    }
   },
 };
 </script>
