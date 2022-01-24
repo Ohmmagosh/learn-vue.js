@@ -17,7 +17,9 @@
 </template>
 
 <script>
+
 import Person from "./Person.vue";
+
 
 export default {
   name: "ListData",
@@ -38,6 +40,7 @@ export default {
   },
   components: {
     Person,
+    
   },
   data() {
     return {

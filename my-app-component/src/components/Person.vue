@@ -1,5 +1,5 @@
 <template>
-  <li>
+  <card>
     <h1>{{ name }}</h1>
     <button @click="showDescription(id)">Description</button>
     <button @click="deleteEmployee(id)">delete</button>
@@ -8,12 +8,16 @@
         <p>salary :{{ salary }}Bath department:{{ department }}</p>
       </div>
     </transition>
-  </li>
+  </card>
 </template>
 
 <script>
+import Card from './Card.vue';
 export default {
   name: "Person",
+  components:{
+    Card
+  },
   methods: {
     showDescription(id) {
       this.$emit("show", id);
@@ -46,15 +50,6 @@ export default {
 </script>
 
 <style scoped>
-li {
-  margin: 1rem 0;
-  font-size: 1.25rem;
-  font-weight: bold;
-  background: #8ddba4;
-  border-radius: 25px;
-  color: #1f1f1f;
-  padding: 0.5rem;
-}
 
 button {
   font: inherit;
