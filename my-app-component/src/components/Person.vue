@@ -1,22 +1,28 @@
 <template>
   <card>
-    <h1>{{ name }}</h1>
-    <button @click="showDescription(id)">Description</button>
-    <button @click="deleteEmployee(id)">delete</button>
-    <transition name="fade">
-      <div v-show="isVisible">
-        <p>salary :{{ salary }}Bath department:{{ department }}</p>
-      </div>
-    </transition>
+    <template v-slot:card-header>
+      <h1>{{ name }}</h1>
+    </template>
+    <template v-slot:card-button>
+      <button @click="showDescription(id)">Description</button>
+      <button @click="deleteEmployee(id)">delete</button>
+    </template>
+    <template v-slot:card-content>
+      <transition name="fade">
+        <div v-show="isVisible">
+          <p>salary :{{ salary }}Bath department:{{ department }}</p>
+        </div>
+      </transition>
+    </template>
   </card>
 </template>
 
 <script>
-import Card from './Card.vue';
+import Card from "./Card.vue";
 export default {
   name: "Person",
-  components:{
-    Card
+  components: {
+    Card,
   },
   methods: {
     showDescription(id) {
@@ -50,7 +56,6 @@ export default {
 </script>
 
 <style scoped>
-
 button {
   font: inherit;
   padding: 0.05rem 1rem;
@@ -62,11 +67,11 @@ button {
   margin: 10px;
 }
 
-.fade-enter-from{
-    opacity: 0;
+.fade-enter-from {
+  opacity: 0;
 }
 
-.fade-enter-active{
-    transition: all 0.5s linear;
+.fade-enter-active {
+  transition: all 0.5s linear;
 }
 </style>
